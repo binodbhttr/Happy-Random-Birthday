@@ -1,3 +1,10 @@
+
+import numpy as np
+import urllib.request
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import matplotlib.colors as mcolors
+
 class Person(object):
     def __init__(self):
         pass
