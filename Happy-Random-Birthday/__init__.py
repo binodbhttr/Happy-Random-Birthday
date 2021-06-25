@@ -1,9 +1,3 @@
-import numpy as np
-import urllib.request
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import matplotlib.colors as mcolors
-
 class Person(object):
     def __init__(self):
         pass
@@ -48,8 +42,8 @@ class Attributes(Person):
         assert type(self.name) == str 
         assert type(self.relation) == str
 
-        assert len(self.name) <= 35
-        assert len(self.relation) <= 35
+        assert len(self.name) <= 35 and len(self.name) >= 2
+        assert len(self.relation) <= 35 and len(self.relation) >= 2
         
         opening_pool = ["Dear ", "Lovely ", "Beloved ", "Dearest ", "Much-loved "]
         op_i = np.random.randint(len(opening_pool))
@@ -75,7 +69,7 @@ class Attributes(Person):
 
         if self.fav_animal != 0:
             assert type(self.fav_animal) == str
-            assert len(self.fav_animal) <= 20
+            assert len(self.fav_animal) <= 20 and len(self.fav_animal) >= 2
 
             body1_pool = ['pet ', 'love ', 'take care of ', 'admire ', 'hug ']
             body1_pool = ['take care of ']   ###################
@@ -85,7 +79,7 @@ class Attributes(Person):
 
         if self.fav_food != 0:
             assert type(self.fav_food) == str
-            assert len(self.fav_food) <= 35
+            assert len(self.fav_food) <= 35 and len(self.fav_food) >= 2
 
             body2_verb_pool = ['eat', 'enjoy', 'devour', 'eat voraciously']
             body2_verb_pool = ['devour']
@@ -98,7 +92,7 @@ class Attributes(Person):
 
         if self.fav_activity != 0:
             assert type(self.fav_activity) == str
-            assert len(self.fav_activity) <= 35
+            assert len(self.fav_activity) <= 35 and len(self.fav_activity) >= 2
 
             body3_pool = [" Who will inspire the " + self.fav_activity + ' \n' + " enthusiasts like you do?"]
             bd3_i = np.random.randint(len(body3_pool))
@@ -153,9 +147,9 @@ class Attributes(Person):
         i = np.random.randint(len(links))
         opener = urllib.request.URLopener()
         opener.addheader('User-Agent', 'whatever')
-        filename, headers = opener.retrieve(links[i], "cute_images/cute_{}.jpg".format(i))
+        filename, headers = opener.retrieve(links[i], ".././cute_images/cute_{}.jpg".format(i))
     
-        img = mpimg.imread("cute_images/cute_{}.jpg".format(i))
+        img = mpimg.imread(".././cute_images/cute_{}.jpg".format(i))
         
         cute_img = plt.figure(figsize = (15,15)) 
         ax = plt.subplot(111)
@@ -164,5 +158,6 @@ class Attributes(Person):
                      color = color, ha='center', va='center') 
         t.set_bbox(dict(facecolor='white', alpha=0.5, edgecolor=color, boxstyle="round"))
         plt.axis('off')
-        plt.savefig('B-day_costum_random_card_' + self.name + '.png', DPI=400, bbox_inches='tight')
+        plt.savefig('.././Bday-cards/B-day_costum_random_card_' + self.name + '.png', 
+                    DPI=400, bbox_inches='tight')
         
